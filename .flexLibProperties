@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="camu.object.DefaultObjectFactory"/>
+    <classEntry path="camu.object.DefaultObjectCache"/>
+    <classEntry path="camu.object.IObjectFactory"/>
+    <classEntry path="camu.object.IObjectCreator"/>
+    <classEntry path="camu.object.IObjectCache"/>
+    <classEntry path="camu.object.IObjectInit"/>
+    <classEntry path="camu.net.Connection"/>
+    <classEntry path="camu.net.IPacket"/>
+    <classEntry path="camu.net.IDecoder"/>
+    <classEntry path="camu.net.IEncoder"/>
+    <classEntry path="camu.object.IObjectWithQualifiedSubclassNameMethod"/>
+    <classEntry path="camu.event.IEventDispatcher"/>
+    <classEntry path="camu.event.IEventObject"/>
+    <classEntry path="camu.net.ITickElapse"/>
+    <classEntry path="camu.net.Packet"/>
+    <classEntry path="camu.net.ISplitAssist"/>
+    <classEntry path="camu.object.ObjectUtil"/>
+    <classEntry path="camu.net.IObjectHeap"/>
+    <classEntry path="camu.loader.ILoader"/>
+    <classEntry path="camu.loader.DefaultLoader"/>
+    <classEntry path="camu.loader.ILoaderEventHandler"/>
+    <classEntry path="camu.loader.SimpleLoader"/>
+    <classEntry path="camu.loader.MultiLoader"/>
+    <classEntry path="camu.loader.MultiLoaderFromJson"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
