@@ -9,7 +9,7 @@ package camu.loader
 	import br.com.stimuli.loading.loadingtypes.LoadingItem;
 	
 
-	public class DefaultLoader extends EventDispatcher implements ILoader
+	public class DefaultLoader extends EventDispatcher
 	{		
 		protected var _bulkLoader:BulkLoader = null;
 		protected var _loaderEventHandler:ILoaderEventHandler = null;

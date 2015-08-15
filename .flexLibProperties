@@ -24,7 +24,6 @@
     <classEntry path="camu.loader.ILoaderEventHandler"/>
     <classEntry path="camu.loader.SimpleLoader"/>
     <classEntry path="camu.loader.MultiLoader"/>
-    <classEntry path="camu.loader.MultiLoaderFromJson"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
