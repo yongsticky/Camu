@@ -70,12 +70,12 @@ package camu.loader
 
 
 		// "type"
-		public function set _type(_type:String) : void
+		public function set type_(_type:String) : void
 		{
 			_props[_TYPE] = _type;
 		}
 
-		public function get _type() : String
+		public function get type_() : String
 		{
 			if (_props.hasOwnProperty(_TYPE))
 			{

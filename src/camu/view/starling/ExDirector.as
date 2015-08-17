@@ -28,9 +28,9 @@ package camu.view.starling
 				return;
 			}
 
-			setSceneFadeInOut(scene, 0, 255, 1, Transitions.LINEAR, function () : void{
+			setSceneFadeInOut(scene, 0, 255, 1, Transitions.LINEAR, function () : void {
 				removeChildren(0, numChildren-2, true);	
-			});
+				});
 			
 			addChild(scene);
 		}

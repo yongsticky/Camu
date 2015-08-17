@@ -5,11 +5,12 @@ package camu.loader
 		public function MultiLoader(tasks:Vector.<LoaderTask>, handler:ILoaderEventHandler)
 		{
 			super(null, handler);
-
-			for (var task:LoaderTask in tasks)
+	
+			for each(var task:LoaderTask in tasks)
 			{
 				add(task);
 			}
+			
 		}		
 	}
 }

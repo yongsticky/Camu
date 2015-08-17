@@ -52,7 +52,7 @@ class Inner
 	{
 		_dictSingleton = new Dictionary();
 
-		for (var item:* in singletons)
+		for each(var item:* in singletons)
 		{
 			_dictSingleton[getQualifiedClassName(item)] = item;
 		}

@@ -1,17 +1,55 @@
 package camu.view.starling
 {	
+	import flash.utils.Dictionary;
+
 	import starling.display.DisplayObject;
+
 
 	public class ExScene extends ExSprite
 	{		
+		protected var _id:String;
+		protected static var _dictScene:Dictionary = new Dictionary(); 
 
-		public function ExScene()
-		{			
+		public static function getScene(id:String) : ExScene
+		{
+			if (_dictScene.hasOwnProperty(id))
+			{
+				return _dictScene[id];
+			}
+			else
+			{
+				return null;
+			}
+		}
+
+		public static function disposeScene(id:String) : void
+		{
+			var scene:ExScene = getScene(id);
+			if (scene)
+			{
+				scene.dispose();
+				delete _dictScene[id];
+			}
+		}
+
+		public function ExScene(id:String)
+		{
+			if (!!getScene(id))
+			{
+				throw new Error("Scene(" + id + ") already exist.");
+			}
+
+			_dictScene[id] = this;
 		}
 
 		override protected function initialize() : void
 		{
 			super.initialize();
+		}
+
+		public function get id() : String
+		{
+			return _id;
 		}
 
 		public function addLayer(name:String, layer:ExLayer) : ExLayer

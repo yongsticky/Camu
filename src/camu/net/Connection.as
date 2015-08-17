@@ -31,12 +31,12 @@ package camu.net
 		
 		
 		// FSM
-		public const FS_SPLIT_BEGIN:int = 0;
-		public const FS_SPLIT_HEADER:int = 1;
-		public const FS_SPLIT_BODY:int = 2;
-		public const FS_SPLIT_ONE:int = 3;
-		public const FS_SPLIT_NEXT:int = 4;
-		public const FS_SPLIT_END:int = 5;
+		public static const FS_SPLIT_BEGIN:int = 0;
+		public static const FS_SPLIT_HEADER:int = 1;
+		public static const FS_SPLIT_BODY:int = 2;
+		public static const FS_SPLIT_ONE:int = 3;
+		public static const FS_SPLIT_NEXT:int = 4;
+		public static const FS_SPLIT_END:int = 5;
 		private var _splitFSMState:int = FS_SPLIT_BEGIN;
 		private var _splitOneBuf:ByteArray = null;		
 		
