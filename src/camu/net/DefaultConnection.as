@@ -9,7 +9,7 @@ package camu.net
 	import flash.utils.ByteArray;
 	import flash.utils.Endian;
 	
-	public class Connection extends EventDispatcher 
+	public class DefaultConnection extends EventDispatcher 
 		implements IEncoder, IDecoder, IObjectHeap, ITickElapse, ISplitAssist
 	{
 		
@@ -41,7 +41,7 @@ package camu.net
 		private var _splitOneBuf:ByteArray = null;		
 		
 		
-		public function Connection()
+		public function DefaultConnection()
 		{
 			_socket = new Socket();
 
