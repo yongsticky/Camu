@@ -15,11 +15,12 @@ package camu.loader
 		private static const PREVENT_CACHING:String = "preventCache";
 		private static const CONTEXT:String = "context";
 
-		private var _handlers:Object = null;
-
 		private static const PROGRESS_HANDLER:String = "progressHandler";
 		private static const COMPLETE_HANDLER:String = "completeHandler";
 		private static const ERROR_HANDLER:String = "errorHandler";
+		private var _handlers:Object = null;
+
+		private static var _content:* = null;
 
 		public function LoaderTask()
 		{			
@@ -39,7 +40,17 @@ package camu.loader
 			return _handlers;
 		}
 
-		//
+		public function get content() : *
+		{
+			return _content;
+		}
+
+		public function set content(ctn:*) : void
+		{
+			_content = ctn;
+		}
+
+		// set / get url
 		public function get url() : String
 		{
 			return _url;

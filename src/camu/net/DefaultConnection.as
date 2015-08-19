@@ -11,15 +11,7 @@ package camu.net
 	
 	public class DefaultConnection extends EventDispatcher 
 		implements IEncoder, IDecoder, IObjectHeap, ITickElapse, ISplitAssist
-	{
-		
-		public static const ConnectionEvent_Connected:String = "ConnectionEvent_Connected";
-		public static const ConnectionEvent_ServerClosed:String = "ConnectionEvent_ServerClosed";
-		public static const ConnectionEvent_ClientClosed:String = "ConnectionEvent_ClientClosed";
-		public static const ConnectionEvent_IoError:String = "ConnectionEvent_IoError";
-		public static const ConnectionEvent_SecurityError:String = "ConnectionEvent_SecurityError";
-		
-		
+	{		
 		private var _socket:Socket = null;		
 		
 		private var _hostIP:String = null;
@@ -61,12 +53,12 @@ package camu.net
 		// EVENT HANDLER
 		protected function onConnect(event:Event):void
 		{			
-			dispatchEvent(new Event(ConnectionEvent_Connected));
+			dispatchEvent(new ConnectionEvent(ConnectionEvent.CONNECTED));
 		}
 		
 		protected function onClose(event:Event):void
 		{
-			dispatchEvent(new Event(ConnectionEvent_ServerClosed));
+			dispatchEvent(new ConnectionEvent(ConnectionEvent.SERVER_CLOSED));
 			
 			destroy();
 		}
@@ -83,12 +75,12 @@ package camu.net
 		
 		protected function onSecurityError(event:SecurityErrorEvent):void
 		{			
-			dispatchEvent(new Event(ConnectionEvent_SecurityError));
+			dispatchEvent(new ConnectionEvent(ConnectionEvent.SECURITY_ERROR));
 		}
 		
 		protected function onIoError(event:IOErrorEvent):void
 		{			
-			dispatchEvent(new Event(ConnectionEvent_IoError));
+			dispatchEvent(new ConnectionEvent(ConnectionEvent.IO_ERROR));
 		}
 		
 				
@@ -119,7 +111,7 @@ package camu.net
 					_socket.close();			
 				}
 				
-				dispatchEvent(new Event(ConnectionEvent_ClientClosed));
+				dispatchEvent(new ConnectionEvent(ConnectionEvent.CLIENT_CLOSED));
 				
 				destroy();
 			}

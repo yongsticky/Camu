@@ -2,7 +2,7 @@ package camu.object
 {
 	public interface IObjectCreator
 	{
-		function createObject() : *;
+		function createObject(...Args) : *;
 		function destoryObject(obj:*): void;
 	}
 }

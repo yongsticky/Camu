@@ -2,9 +2,9 @@ package camu.loader
 {
 	public class MultiLoader extends DefaultLoader
 	{
-		public function MultiLoader(tasks:Vector.<LoaderTask>, handler:ILoaderEventHandler)
+		public function MultiLoader(name:String, tasks:Vector.<LoaderTask>, handler:ILoaderEventHandler)
 		{
-			super(null, handler);
+			super(name, handler);
 	
 			for each(var task:LoaderTask in tasks)
 			{

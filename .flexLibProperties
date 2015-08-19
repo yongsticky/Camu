@@ -7,7 +7,6 @@
     <classEntry path="camu.object.IObjectCreator"/>
     <classEntry path="camu.object.IObjectCache"/>
     <classEntry path="camu.object.IObjectInit"/>
-    <classEntry path="camu.net.Connection"/>
     <classEntry path="camu.net.IPacket"/>
     <classEntry path="camu.net.IDecoder"/>
     <classEntry path="camu.net.IEncoder"/>
