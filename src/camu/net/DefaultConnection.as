@@ -17,9 +17,9 @@ package camu.net
 		private var _hostIP:String = null;
 		private var _port:int = 0;
 		
-		private var _sendBuf:Vector.<IPacket> = null;				// 待发送的Packet
-		private var _rawRecvBuf:Vector.<ByteArray> = null;		// 接收到的原始字节
-		private var _recvBuf:Vector.<ByteArray> = null;			// 经过编排后的ByteArray
+		private var _sendBuf:Vector.<IPacket> = null;			// 待发送的Packet
+		private var _rawRecvBuf:Vector.<ByteArray> = null;		// 接收到的原始包
+		private var _recvBuf:Vector.<ByteArray> = null;			// 经过编排后的Packet
 		
 		
 		// FSM
@@ -131,9 +131,9 @@ package camu.net
 		}
 		
 		// IObjectHeap
-		public function objectNew(cls:Class) : *
+		public function objectNew(cls:Class, ...args) : *
 		{
-			return new cls();
+			return new cls(args);
 		}
 		
 		public function objectDelete(obj:*) : void

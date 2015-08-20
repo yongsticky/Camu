@@ -32,7 +32,7 @@ package camu.object
 			return true;
 		}
 		
-		public function createInstance(cls:Class, ...Args) : *
+		public function createInstance(cls:Class, ...args) : *
 		{			
 			var key:String = getQualifiedClassName(cls);
 			if (_dictClsCreator.hasOwnProperty(key))
@@ -49,11 +49,11 @@ package camu.object
 					var creator:IObjectCreator = _dictClsCreator[key];
 					if (creator)
 					{
-						obj = creator.createObject(Args);		// 使用Creator创建
+						obj = creator.createObject(args);		// 使用Creator创建
 					}
 					else
 					{
-						obj = new cls(Args);		// 使用new创建
+						obj = new cls(args);		// 使用new创建
 					}
 				}
 				
