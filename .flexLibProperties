@@ -21,7 +21,6 @@
     <classEntry path="camu.loader.ILoader"/>
     <classEntry path="camu.loader.DefaultLoader"/>
     <classEntry path="camu.loader.ILoaderEventHandler"/>
-    <classEntry path="camu.loader.SimpleLoader"/>
     <classEntry path="camu.loader.MultiLoader"/>
     <classEntry path="camu.view.starling.ExScene"/>
     <classEntry path="camu.view.starling.ExLayer"/>
