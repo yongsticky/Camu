@@ -13,7 +13,7 @@ package camu.object
 		{
 			var key:String = null;		
 			var obj:IObjectWithQualifiedSubclassNameMethod = value as IObjectWithQualifiedSubclassNameMethod;
-			if (!!obj)
+			if (obj)
 			{
 				key = obj.getQualifiedSubclassName();
 			}

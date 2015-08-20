@@ -38,7 +38,7 @@ package camu.object
 			if (_dictClsCreator.hasOwnProperty(key))
 			{
 				var obj:* = null
-				if (!!_objCache)	// 是否使用了cache
+				if (_objCache)	// 是否使用了cache
 				{
 					obj = _objCache.popObject(cls);
 				}
@@ -47,7 +47,7 @@ package camu.object
 				{
 					// 是否设置了Creator
 					var creator:IObjectCreator = _dictClsCreator[key];
-					if (!!creator)
+					if (creator)
 					{
 						obj = creator.createObject(Args);		// 使用Creator创建
 					}
@@ -85,7 +85,7 @@ package camu.object
 					objInit.onObjectDestroy();
 				}
 				
-				if (!!_objCache)
+				if (_objCache)
 				{
 					if (_objCache.pushObject(obj))		// 回收成功
 					{						
@@ -94,7 +94,7 @@ package camu.object
 				}
 				
 				var creator:IObjectCreator = _dictClsCreator[key];
-				if (!!creator)
+				if (creator)
 				{
 					creator.destoryObject(obj);			// 使用creator来销毁
 				}				

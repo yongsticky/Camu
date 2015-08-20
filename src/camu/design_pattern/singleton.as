@@ -26,7 +26,7 @@ package camu.design_pattern
 
 		public static function instanceOf(cls:Class) : *
 		{
-			if (!!_instance)
+			if (_instance)
 			{
 				var key:String = getQualifiedClassName(cls);
 				return _instance._inner.get(key);
@@ -61,7 +61,7 @@ class Inner
 
 	public function get(key:String) : *
 	{
-		if (!!key)
+		if (key)
 		{
 			if (_dictSingleton.hasOwnProperty(key))
 			{

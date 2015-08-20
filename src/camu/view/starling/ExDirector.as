@@ -87,7 +87,7 @@ package camu.view.starling
 			tn.fadeTo(alphaTo);
 			tn.transition = transition; 
 			Starling.juggler.add(tn);
-			if (!!completeHandler)
+			if (completeHandler)
 			{
 				tn.onComplete = completeHandler;
 			}			

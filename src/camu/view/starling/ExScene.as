@@ -34,7 +34,7 @@ package camu.view.starling
 
 		public function ExScene(id:String)
 		{
-			if (!!getScene(id))
+			if (getScene(id))
 			{
 				throw new Error("Scene(" + id + ") already exist.");
 			}
@@ -54,7 +54,7 @@ package camu.view.starling
 
 		public function addLayer(name:String, layer:ExLayer) : ExLayer
 		{
-			if (!!layer)
+			if (layer)
 			{
 				layer.name = name;
 				addChild(layer);
@@ -65,7 +65,7 @@ package camu.view.starling
 
 		public function addLayerAt(name:String, layer:ExLayer, index:int) : ExLayer
 		{
-			if (!!layer)
+			if (layer)
 			{
 				layer.name = name;
 				addChildAt(layer, index);
@@ -113,7 +113,7 @@ package camu.view.starling
 			for (var i:int = 0; i < this.numChildren; i++)
 			{
 				var layer:ExLayer = getChildAt(i) as ExLayer;
-				if (!!layer)
+				if (layer)
 				{
 					layer.pauseAnimation();
 				}
@@ -125,7 +125,7 @@ package camu.view.starling
 			for (var i:int = 0; i < this.numChildren; i++)
 			{
 				var layer:ExLayer = getChildAt(i) as ExLayer;
-				if (!!layer)
+				if (layer)
 				{
 					layer.resumeAnimation();
 				}

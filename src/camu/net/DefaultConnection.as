@@ -93,9 +93,9 @@ package camu.net
 		
 		public function connect() : void
 		{
-			if (!!_socket && !_socket.connected)
+			if (_socket && !_socket.connected)
 			{
-				if (!!_hostIP && _port > 1024)
+				if (_hostIP && _port > 1024)
 				{
 					_socket.connect(_hostIP, _port);	
 				}
@@ -104,7 +104,7 @@ package camu.net
 		
 		public function disconnect() : void
 		{
-			if (!!_socket)
+			if (_socket)
 			{
 				if (_socket.connected)
 				{
@@ -199,13 +199,13 @@ package camu.net
 				return;
 			}
 			
-			while (!!_sendBuf.length)
+			while (_sendBuf.length)
 			{
 				var packet:IPacket = _sendBuf.shift();
 				if (packet)
 				{
 					var bytes:ByteArray = encode(packet);				
-					if (!!bytes)
+					if (bytes)
 					{
 						_socket.writeBytes(bytes);
 						_socket.flush();
@@ -226,7 +226,7 @@ package camu.net
 		
 		private function handleRecvBuffer() : void
 		{
-			while (!!_recvBuf.length)
+			while (_recvBuf.length)
 			{
 				var bytes:ByteArray = _recvBuf.shift();
 				if (bytes)
