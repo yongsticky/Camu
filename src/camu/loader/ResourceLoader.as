@@ -124,8 +124,8 @@ package camu.loader
 		}
 		
 		protected function onLoaderError(event:BulkProgressEvent) : void
-		{			
-		
+		{
+			
 		}		
 		
 		public function loadeResources(sceneId:String) : void

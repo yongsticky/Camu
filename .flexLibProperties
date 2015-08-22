@@ -26,6 +26,11 @@
     <classEntry path="camu.view.starling.ExLayer"/>
     <classEntry path="camu.view.starling.ExSprite"/>
     <classEntry path="camu.view.starling.ExDirector"/>
+    <classEntry path="camu.util.Logger.Logger"/>
+    <classEntry path="camu.util.Logger.LogLevel"/>
+    <classEntry path="camu.util.Logger.FakeLogger"/>
+    <classEntry path="camu.util.Logger.ILogger"/>
+    <classEntry path="camu.util.Logger.TrueLogger"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
