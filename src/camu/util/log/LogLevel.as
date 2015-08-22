@@ -1,4 +1,4 @@
-package camu.util.Logger
+package camu.util.log
 {
 	public final class LogLevel
 	{
