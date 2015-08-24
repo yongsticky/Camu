@@ -4,6 +4,6 @@ package camu.net
 
 	public interface IDecoder
 	{
-		function decode(bytes:ByteArray) : IPacket;
+		function decode(bytes:ByteArray) : Packet;
 	}
 }

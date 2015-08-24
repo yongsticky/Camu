@@ -8,7 +8,7 @@ package camu.util.log
 			_off = off;
 		}
 		
-		public static function createLogger(name:String, logLevel:int = LogLevel.ERROR, logFunction:Function = null) : ILogger
+		public static function createLogger(cls:Class, logLevel:int = LogLevel.ERROR, logFunction:Function = null) : ILogger
 		{
 			if (_off)
 			{
@@ -16,7 +16,7 @@ package camu.util.log
 			}
 			else
 			{
-				return new TrueLogger(name, logLevel, logFunction);
+				return new TrueLogger(cls, logLevel, logFunction);
 			}
 		}		
 		

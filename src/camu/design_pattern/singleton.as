@@ -2,12 +2,12 @@ package camu.design_pattern
 {
 	import flash.utils.getQualifiedClassName;
 
-	public class singleton
+	public class Singleton
 	{
-		public static var _instance:singleton = null;
+		public static var _instance:Singleton = null;
 
 		private var _inner:Inner = null;		
-		public function singleton(inner:Inner)
+		public function Singleton(inner:Inner)
 		{
 			_inner = inner;
 		}
@@ -16,7 +16,7 @@ package camu.design_pattern
 		{
 			if (!_instance)
 			{
-				_instance = new singleton(new Inner(singletons));
+				_instance = new Singleton(new Inner(singletons));
 			}
 			else
 			{
@@ -29,12 +29,20 @@ package camu.design_pattern
 			if (_instance)
 			{
 				var key:String = getQualifiedClassName(cls);
-				return _instance._inner.get(key);
+				var obj:* = _instance._inner.get(key);
+				if (obj is cls)
+				{
+					return obj;
+				}
+				else
+				{
+					throw new Error("Wrong Class Type!");
+				}
 
 			}
 			else
 			{
-				throw new Error("singleton class not init.");
+				throw new Error("singleton class not init!");
 			}		
 		}
 	}
@@ -64,7 +72,7 @@ class Inner
 		if (key)
 		{
 			if (_dictSingleton.hasOwnProperty(key))
-			{
+			{				
 				return _dictSingleton[key];
 			}
 		}

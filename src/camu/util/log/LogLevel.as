@@ -9,6 +9,8 @@ package camu.util.log
 		public static const ERROR:int = 3;
 		
 		public static const OFF:int = 10;
+		
+		public static const LOG_LEVEL_DESC:Array = ["[DEBUG] - ", "[INFO] - ", "[WARNING] - ", "[ERROR] - "];
 				
 		public function LogLevel()
 		{

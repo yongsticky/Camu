@@ -4,6 +4,6 @@ package camu.net
 
 	public interface IEncoder
 	{
-		function encode(packet:IPacket) : ByteArray;
+		function encode(packet:Packet) : ByteArray;
 	}
 }

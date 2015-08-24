@@ -41,7 +41,8 @@ package camu.loader
 						for each(var props:Object in resList)
 						{
 							props["id"] = sceneId + "." + props["id"];
-							var item:LoadingItem = loader.add(obj[SERVER] + props["path"], props);
+							var url:String = obj[SERVER] + props["path"];
+							var item:LoadingItem = loader.add(url, props);
 							if (item)
 							{
 								item.addEventListener(BulkProgressEvent.COMPLETE, onLoadItemComplete);
