@@ -1,4 +1,4 @@
-package camu.util.log
+package camu.logger
 {
 	public class Logger
 	{		
@@ -8,7 +8,7 @@ package camu.util.log
 			_off = off;
 		}
 		
-		public static function createLogger(cls:Class, logLevel:int = LogLevel.ERROR, logFunction:Function = null) : ILogger
+		public static function createLogger(cls:Class, logLevel:int = LEVEL.ERROR, logFunction:Function = null) : ILogger
 		{
 			if (_off)
 			{

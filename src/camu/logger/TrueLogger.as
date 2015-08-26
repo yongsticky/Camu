@@ -1,10 +1,10 @@
-package camu.util.log
+package camu.logger
 {
 	import flash.utils.getQualifiedClassName;
 
 	public class TrueLogger implements ILogger
 	{
-		protected var _logLevel:int = LogLevel.OFF;
+		protected var _LEVEL:int = LEVEL.OFF;
 		
 		protected var _logFunction:Function = null;
 		
@@ -12,7 +12,7 @@ package camu.util.log
 
 		
 		
-		public function TrueLogger(cls:Class, logLevel:int = LogLevel.ERROR, logFunction:Function = null)
+		public function TrueLogger(cls:Class, LEVEL:int = LEVEL.ERROR, logFunction:Function = null)
 		{
 			var name:String = getQualifiedClassName(cls);
 			if (name)
@@ -25,15 +25,15 @@ package camu.util.log
 			
 			_logFunction = logFunction ? logFunction:trace;
 			
-			_logLevel = logLevel;					
+			_LEVEL = LEVEL;					
 		}
 		
 		public function log(...msg) : void
 		{
-			var msgLevel:int  = isNaN(msg[msg.length -1] ) ? LogLevel.ERROR : int(msg.pop());
-			if (msgLevel >= _logLevel )
+			var msgLevel:int  = isNaN(msg[msg.length -1] ) ? LEVEL.ERROR : int(msg.pop());
+			if (msgLevel >= _LEVEL )
 			{				
-				_logFunction(getTime() + _className + LogLevel.LOG_LEVEL_DESC[msgLevel] + msg.join(" "));
+				_logFunction(getTime() + _className + LEVEL.LOG_LEVEL_DESC[msgLevel] + msg.join(" "));
 			}	
 		}
 		

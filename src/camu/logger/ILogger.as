@@ -1,5 +1,5 @@
 
-package camu.util.log
+package camu.logger
 {
 	public interface ILogger
 	{

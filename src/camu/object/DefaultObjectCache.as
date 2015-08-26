@@ -3,9 +3,9 @@ package camu.object
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	
-	import camu.util.log.ILogger;
-	import camu.util.log.LogLevel;
-	import camu.util.log.Logger;
+	import camu.logger.ILogger;
+	import camu.logger.LEVEL;
+	import camu.logger.Logger;
 
 	public class DefaultObjectCache implements IObjectCache
 	{
@@ -18,25 +18,25 @@ package camu.object
 		
 		public function DefaultObjectCache()
 		{
-			_logger = Logger.createLogger(DefaultObjectCache, LogLevel.DEBUG);
+			_logger = Logger.createLogger(DefaultObjectCache, LEVEL.DEBUG);
 			
 			_dictCache = new Dictionary();						
 		}
 		
 		public function pushObject(obj:*) : Boolean
 		{
-			_logger.log("pushObject, Enter.", LogLevel.DEBUG);
+			_logger.log("pushObject, Enter.", LEVEL.DEBUG);
 			
 			var key:String = ObjectUtil.getQualifiedSubclassName(obj);			
 			
-			_logger.log("pushObject, get Object subclass name = [", key, "].", LogLevel.INFO);
+			_logger.log("pushObject, get Object subclass name = [", key, "].", LEVEL.INFO);
 			
 			if (!_dictCache.hasOwnProperty(key))
 			{
 				_dictCache[key] = new Vector.<Object>();
 				_dictCache[key].push(obj);
 				
-				_logger.log("pushObject, push object to cache, it's first object.", LogLevel.INFO);
+				_logger.log("pushObject, push object to cache, it's first object.", LEVEL.INFO);
 				
 				return true;
 			}
@@ -46,12 +46,12 @@ package camu.object
 				{
 					_dictCache[key].push(obj);
 					
-					_logger.log("pushObject, push object to cache.", LogLevel.INFO);
+					_logger.log("pushObject, push object to cache.", LEVEL.INFO);
 					
 					return true;
 				}
 				
-				_logger.log("pushObject, cache object up to MAX_CACHE_SIZE_PER_CLASS.", LogLevel.WARNING);
+				_logger.log("pushObject, cache object up to MAX_CACHE_SIZE_PER_CLASS.", LEVEL.WARNING);
 				
 				return false;
 			}			
@@ -59,29 +59,29 @@ package camu.object
 		
 		public function popObject(cls:Class) : *
 		{
-			_logger.log("popObject, Enter.", LogLevel.DEBUG);
+			_logger.log("popObject, Enter.", LEVEL.DEBUG);
 			
 			var key:String = getQualifiedClassName(cls);
 			
-			_logger.log("pushObject, get Object subclass name = [", key, "].", LogLevel.INFO);
+			_logger.log("pushObject, get Object subclass name = [", key, "].", LEVEL.INFO);
 			
 			if (_dictCache.hasOwnProperty(key) && _dictCache[key].length > 0)
 			{
 				var obj:Object = _dictCache[key].pop();
 				if (_dictCache[key].length == 0)
 				{
-					_logger.log("pushObject, cached object num = 0, delete object list.", LogLevel.DEBUG);
+					_logger.log("pushObject, cached object num = 0, delete object list.", LEVEL.DEBUG);
 					
 					delete _dictCache[key];
 				}
 				
-				_logger.log("pushObject, object has been pop.", LogLevel.INFO);
+				_logger.log("pushObject, object has been pop.", LEVEL.INFO);
 				
 				return obj;
 			}
 			else
 			{
-				_logger.log("pushObject, object's class isn't registered.", LogLevel.INFO);
+				_logger.log("pushObject, object's class isn't registered.", LEVEL.INFO);
 				
 				return null;
 			}

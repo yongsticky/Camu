@@ -10,9 +10,9 @@ package camu.net
 	import flash.utils.Endian;
 	
 	import camu.util.Bytes2Hex;
-	import camu.util.log.ILogger;
-	import camu.util.log.LogLevel;
-	import camu.util.log.Logger;
+	import camu.logger.ILogger;
+	import camu.logger.LEVEL;
+	import camu.logger.Logger;
 	
 
 	public class BaseConnection extends EventDispatcher 
@@ -43,7 +43,7 @@ package camu.net
 		
 		public function BaseConnection()
 		{
-			_logger = Logger.createLogger(BaseConnection, LogLevel.DEBUG);
+			_logger = Logger.createLogger(BaseConnection, LEVEL.DEBUG);
 			
 			_socket = new Socket();
 
@@ -63,13 +63,13 @@ package camu.net
 		// EVENT HANDLER
 		protected function onConnect(event:Event):void
 		{
-			_logger.log("onConnect", LogLevel.DEBUG);
+			_logger.log("onConnect", LEVEL.DEBUG);
 			dispatchEvent(new ConnectionEvent(ConnectionEvent.CONNECTED));
 		}
 		
 		protected function onClose(event:Event):void
 		{
-			_logger.log("onClose", LogLevel.DEBUG);
+			_logger.log("onClose", LEVEL.DEBUG);
 			dispatchEvent(new ConnectionEvent(ConnectionEvent.SERVER_CLOSED));
 			
 			destroy();
@@ -77,7 +77,7 @@ package camu.net
 		
 		protected function onSocketData(event:ProgressEvent):void
 		{
-			_logger.log("onSocketData", LogLevel.DEBUG);
+			_logger.log("onSocketData", LEVEL.DEBUG);
 			var rawBytes:ByteArray = objectNew(ByteArray);
 			rawBytes.endian = Endian.BIG_ENDIAN;
 			rawBytes.length = _socket.bytesAvailable;
@@ -89,13 +89,13 @@ package camu.net
 		
 		protected function onSecurityError(event:SecurityErrorEvent):void
 		{
-			_logger.log("onSecurityError", LogLevel.ERROR);
+			_logger.log("onSecurityError", LEVEL.ERROR);
 			dispatchEvent(new ConnectionEvent(ConnectionEvent.SECURITY_ERROR));
 		}
 		
 		protected function onIoError(event:IOErrorEvent):void
 		{
-			_logger.log("onIoError", LogLevel.ERROR);
+			_logger.log("onIoError", LEVEL.ERROR);
 			dispatchEvent(new ConnectionEvent(ConnectionEvent.IO_ERROR));
 		}
 		
@@ -106,29 +106,29 @@ package camu.net
 			_hostIP = hostIP;
 			_port = port;
 			
-			_logger.log("setTargetAddress ip:[", _hostIP, "], port:[", port.toString(), "]", LogLevel.INFO);	
+			_logger.log("setTargetAddress ip:[", _hostIP, "], port:[", port.toString(), "]", LEVEL.INFO);	
 		}
 		
 		public function connect() : void
 		{
-			_logger.log("user call connect.", LogLevel.INFO);
+			_logger.log("user call connect.", LEVEL.INFO);
 			if (_socket && !_socket.connected)
 			{
 				if (_hostIP && _port > 1024)
 				{
-					_logger.log("connect to server.", LogLevel.DEBUG);
+					_logger.log("connect to server.", LEVEL.DEBUG);
 					_socket.connect(_hostIP, _port);	
 				}
 				else
 				{
-					_logger.log("Server Address Wrong.", LogLevel.ERROR);
+					_logger.log("Server Address Wrong.", LEVEL.ERROR);
 				}
 			}
 		}
 		
 		public function disconnect() : void
 		{
-			_logger.log("user call disconnect.", LogLevel.INFO);
+			_logger.log("user call disconnect.", LEVEL.INFO);
 			
 			if (_socket)
 			{
@@ -149,7 +149,7 @@ package camu.net
 			{			
 				_sendBuf.push(packet);
 				
-				_logger.log("send, push packet into send buffer.", LogLevel.DEBUG);
+				_logger.log("send, push packet into send buffer.", LEVEL.DEBUG);
 			}
 		}
 			
@@ -237,7 +237,7 @@ package camu.net
 						
 			while (_sendBuf.length)
 			{
-				_logger.log("handleSendBuffer, _sendBuf length:",_sendBuf.length.toString(), LogLevel.DEBUG);
+				_logger.log("handleSendBuffer, _sendBuf length:",_sendBuf.length.toString(), LEVEL.DEBUG);
 				
 				var packet:Packet = _sendBuf.shift();
 				if (packet)
@@ -245,7 +245,7 @@ package camu.net
 					var bytes:ByteArray = encode(packet);				
 					if (bytes)
 					{
-						_logger.log("handleSendBuffer, writeBytes", LogLevel.DEBUG);
+						_logger.log("handleSendBuffer, writeBytes", LEVEL.DEBUG);
 						
 						_socket.writeBytes(bytes, 0, bytes.bytesAvailable);
 						_socket.flush();
@@ -271,7 +271,7 @@ package camu.net
 		{
 			while (_recvBuf.length)
 			{
-				_logger.log("handleRecvBuffer, recvBuf length=", _recvBuf.length.toString(), LogLevel.DEBUG);
+				_logger.log("handleRecvBuffer, recvBuf length=", _recvBuf.length.toString(), LEVEL.DEBUG);
 				
 				var bytes:ByteArray = _recvBuf.shift();
 				if (bytes)

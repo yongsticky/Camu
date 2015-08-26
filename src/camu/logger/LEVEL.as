@@ -1,6 +1,6 @@
-package camu.util.log
+package camu.logger
 {
-	public final class LogLevel
+	public final class LEVEL
 	{
 		
 		public static const DEBUG:int = 0;
@@ -12,7 +12,7 @@ package camu.util.log
 		
 		public static const LOG_LEVEL_DESC:Array = ["[DEBUG] - ", "[INFO] - ", "[WARNING] - ", "[ERROR] - "];
 				
-		public function LogLevel()
+		public function LEVEL()
 		{
 			throw new Error("can't create instance.");
 		}	

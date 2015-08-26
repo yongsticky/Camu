@@ -1,4 +1,4 @@
-package camu.util.log
+package camu.logger
 {
 	public class FakeLogger implements ILogger
 	{
