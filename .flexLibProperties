@@ -14,21 +14,19 @@
     <classEntry path="camu.event.IEventObject"/>
     <classEntry path="camu.net.ITickElapse"/>
     <classEntry path="camu.net.Packet"/>
-    <classEntry path="camu.net.ISplitAssist"/>
+    <classEntry path="camu.net.IRawPacketSplit"/>
     <classEntry path="camu.object.ObjectUtil"/>
     <classEntry path="camu.net.IObjectHeap"/>
     <classEntry path="camu.loader.ILoader"/>
     <classEntry path="camu.loader.DefaultLoader"/>
     <classEntry path="camu.loader.ILoaderEventHandler"/>
     <classEntry path="camu.loader.MultiLoader"/>
-    <classEntry path="camu.view.starling.ExScene"/>
-    <classEntry path="camu.view.starling.ExLayer"/>
-    <classEntry path="camu.view.starling.ExSprite"/>
-    <classEntry path="camu.view.starling.ExDirector"/>
     <classEntry path="camu.util.Logger.Logger"/>
     <classEntry path="camu.util.Logger.LogLevel"/>
     <classEntry path="camu.util.Logger.ILogger"/>
     <classEntry path="camu.util.Logger.TrueLogger"/>
+    <classEntry path="camu.util.ShortIntUtil"/>
+    <classEntry path="camu.util.Bytes2Hex"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

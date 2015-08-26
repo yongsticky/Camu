@@ -9,13 +9,14 @@ package camu.net
 	import flash.utils.ByteArray;
 	import flash.utils.Endian;
 	
+	import camu.util.Bytes2Hex;
 	import camu.util.log.ILogger;
 	import camu.util.log.LogLevel;
 	import camu.util.log.Logger;
 	
 
 	public class BaseConnection extends EventDispatcher 
-		implements IEncoder, IDecoder, IObjectHeap, ITickElapse, ISplitAssist
+		implements IEncoder, IDecoder, IObjectHeap, ITickElapse, IRawPacketSplit
 	{	
 		private var _logger:ILogger;
 		
@@ -78,10 +79,11 @@ package camu.net
 		{
 			_logger.log("onSocketData", LogLevel.DEBUG);
 			var rawBytes:ByteArray = objectNew(ByteArray);
-			rawBytes.endian = Endian.LITTLE_ENDIAN;
+			rawBytes.endian = Endian.BIG_ENDIAN;
 			rawBytes.length = _socket.bytesAvailable;
-			_socket.readBytes(rawBytes, 0, _socket.bytesAvailable);
+			_socket.readBytes(rawBytes, 0, _socket.bytesAvailable);			
 			_rawRecvBuf.push(rawBytes);
+			Bytes2Hex.Trace(rawBytes);
 			
 		}
 		
@@ -183,7 +185,7 @@ package camu.net
 			handleRecvBuffer();
 		}
 		
-		// IPacketSplitInfo
+		// IRawPacketSplit
 		public function getPacketHeaderLength() : int
 		{
 			return 0;
@@ -259,7 +261,7 @@ package camu.net
 		
 		private function handleRawRecvBuffer() : void
 		{
-			if (_recvBuf.length > 0)
+			if (_rawRecvBuf.length > 0)
 			{
 				SplitRawBufferFSM();
 			}
