@@ -8,30 +8,31 @@ package camu.net
 		{
 		}
 		
-		public function createObject(...args):*
+		public function createObject(data:*):*
 		{
-			if (args.length == 1)
+			
+			if (data is Packet)
 			{
-				return new PacketEvent(args[0]);
+				return new PacketEvent(data);
 			}
 			else
 			{
-				throw new Error("Arguments Error.");
+				throw new Error("Invalide Parameter.");
 			}
 		}
 		
-		public function setCreatedData(obj:*, ...args) : void
+		public function setCreatedData(obj:*, data:*) : void
 		{			
 			var packetEvent:PacketEvent = obj as PacketEvent;
 			if (packetEvent)
 			{
-				if (args.length == 1)
+				if (data is Packet)
 				{
-					packetEvent.packet = args[0];
+					packetEvent.packet = data;
 				}
 				else
 				{
-					throw new Error("Arguments Error.");
+					throw new Error("Invalide Parameter.");
 				}
 			}
 			else

@@ -177,7 +177,7 @@ package camu.net
 			throw new Error("Abstract function!");
 		}
 				
-		public function newObject(cls:Class, ...args) : *
+		public function newObject(cls:Class, data:* = null) : *
 		{
 			throw new Error("Abstract function!");
 		}

@@ -53,7 +53,7 @@ package camu.object
 			return true;
 		}
 		
-		public function createInstance(cls:Class, ...args) : *
+		public function createInstance(cls:Class, data:* = null) : *
 		{
 			_logger.log("createInstance, Enter", LEVEL.DEBUG);
 			
@@ -78,26 +78,14 @@ package camu.object
 					if (creator)
 					{
 						_logger.log("createInstance, class implements IObjectCreator, use Creator alloc.", LEVEL.DEBUG);
-						if (args.length == 0)
-						{
-							obj = creator.createObject();
-						}
-						else
-						{
-							obj = creator.createObject(args);		// 使用Creator创建
-						}
+
+						obj = creator.createObject(data);		// 使用Creator创建
 					}
 					else
 					{
 						_logger.log("createInstance, new class directly.", LEVEL.DEBUG);
-						if (args.length == 0)
-						{
-							obj = new cls();		// 使用new创建
-						}
-						else
-						{
-							obj = new cls(args);
-						}
+						obj = new cls();		// 使用new创建
+					
 					}
 				}				
 				
