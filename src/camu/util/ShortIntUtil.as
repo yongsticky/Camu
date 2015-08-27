@@ -33,8 +33,8 @@ package camu.util
 		{
 			if (bytes.bytesAvailable >= 2)
 			{
-				var low:int = bytes.readByte();
-				var high:int = bytes.readByte();
+				var low:int = bytes.readByte() & 0xFF;
+				var high:int = bytes.readByte() & 0xFF;
 				
 				if (bytes.endian == Endian.BIG_ENDIAN)
 				{				

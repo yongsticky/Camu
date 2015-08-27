@@ -27,6 +27,7 @@
     <classEntry path="camu.util.Logger.TrueLogger"/>
     <classEntry path="camu.util.ShortIntUtil"/>
     <classEntry path="camu.util.Bytes2Hex"/>
+    <classEntry path="camu.util.BigIntUtil"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

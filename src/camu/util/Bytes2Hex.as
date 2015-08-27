@@ -7,14 +7,17 @@ package camu.util
 	{
 		public static function Trace(bytes:ByteArray):void 
 		{
-			if (bytes == null) 
+			if (!bytes) 
 			{
 				return;
 			}
 			
+			var backupPos:uint = bytes.position;
+			
 			var length:int = getHexLen(bytes.length);
-			length = length > 4 ? length : 4;
+			length = length>4 ? length:4;
 			         
+			trace("\n************************************************\n");
 			bytes.position = 0;
 			for (var j:int = 0; bytes.bytesAvailable > 0; j += 16) 
 			{
@@ -36,6 +39,9 @@ package camu.util
 				
 				trace(line, "\t", str);
 			}
+			
+			trace("\n************************************************\n");
+			bytes.position = backupPos;
 		}
 		         
 		private static function fillHexLen(num:int, length:int):String 

@@ -63,25 +63,25 @@ package camu.object
 			
 			var key:String = getQualifiedClassName(cls);
 			
-			_logger.log("pushObject, get Object subclass name = [", key, "].", LEVEL.INFO);
+			_logger.log("popObject, get Object subclass name = [", key, "].", LEVEL.INFO);
 			
 			if (_dictCache.hasOwnProperty(key) && _dictCache[key].length > 0)
 			{
 				var obj:Object = _dictCache[key].pop();
 				if (_dictCache[key].length == 0)
 				{
-					_logger.log("pushObject, cached object num = 0, delete object list.", LEVEL.DEBUG);
+					_logger.log("popObject, cached object num = 0, delete object list.", LEVEL.DEBUG);
 					
 					delete _dictCache[key];
 				}
 				
-				_logger.log("pushObject, object has been pop.", LEVEL.INFO);
+				_logger.log("popObject, object has been pop.", LEVEL.INFO);
 				
 				return obj;
 			}
 			else
 			{
-				_logger.log("pushObject, object's class isn't registered.", LEVEL.INFO);
+				_logger.log("popObject, find no object in cache.", LEVEL.INFO);
 				
 				return null;
 			}
