@@ -6,9 +6,9 @@ package camu.object
 	
 	import camu.logger.ILogger;
 	import camu.logger.LEVEL;
-	import camu.logger.Logger;
+	import camu.logger.Logger;	
 	
-	public class BaseObjectFactory implements IObjectFactory
+	public class BaseObjectFactory
 	{
 		protected var _objCache:IObjectCache = null;
 		protected var _dictClsCreator:Dictionary = null; 
@@ -32,7 +32,7 @@ package camu.object
 				_objCache = objCache;
 			}
 			
-			registerClass(ByteArray);									
+			registerClass(ByteArray);			
 		}
 		
 		public function registerClass(cls:Class, creator:IObjectCreator = null) : Boolean
@@ -99,15 +99,7 @@ package camu.object
 							obj = new cls(args);
 						}
 					}
-				}
-				
-				// 如果对象实现了IObjectInit接口，需要调用onObjectCreate
-				var objInit:IObjectInit = obj as IObjectInit;
-				if (objInit)
-				{
-					_logger.log("createInstance, class implements IObjectInit.", LEVEL.DEBUG);
-					objInit.onObjectCreate();
-				}
+				}				
 				
 				_logger.log("createInstance, object has been created.", LEVEL.INFO);
 				return obj;
@@ -131,15 +123,7 @@ package camu.object
 			
 			var key:String = ObjectUtil.getQualifiedSubclassName(obj);		// 处理子类对象
 			if (_dictClsCreator.hasOwnProperty(key))
-			{
-				// 如果对象实现了IObjectInit接口，需要调用onObjectDestroy
-				var objInit:IObjectInit = obj as IObjectInit;
-				if (objInit)
-				{
-					_logger.log("destroyInstance, class implements IObjectInit.", LEVEL.DEBUG);
-					objInit.onObjectDestroy();
-				}
-				
+			{				
 				if (_objCache)
 				{
 					if (_objCache.pushObject(obj))		// 回收成功

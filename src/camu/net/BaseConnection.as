@@ -15,8 +15,7 @@ package camu.net
 	
 	
 
-	public class BaseConnection extends EventDispatcher 
-		implements IEncoder, IDecoder, IObjectHeap, ITickElapse, IRawPacketSplit
+	public class BaseConnection extends EventDispatcher
 	{	
 		private var _logger:ILogger;
 		
@@ -25,7 +24,7 @@ package camu.net
 		private var _hostIP:String = null;
 		private var _port:int = 0;
 		
-		private var _sendBuf:Vector.<Packet> = null;			// 待发送的Packet
+		private var _sendBuf:Vector.<Packet> = null;				// 待发送的Packet
 		private var _rawRecvBuf:Vector.<ByteArray> = null;		// 接收到的原始包
 		private var _recvBuf:Vector.<ByteArray> = null;			// 经过编排后的Packet
 		
@@ -51,7 +50,7 @@ package camu.net
 			_sendBuf = new Vector.<Packet>();
 			_rawRecvBuf = new Vector.<ByteArray>();
 			_recvBuf = new Vector.<ByteArray>();
-			
+									
 			
 			_socket.addEventListener(Event.CONNECT, onConnect);
 			_socket.addEventListener(Event.CLOSE, onClose);
@@ -81,7 +80,7 @@ package camu.net
 		{
 			_logger.log("onSocketData", LEVEL.DEBUG);
 
-			var rawBytes:ByteArray = objectNew(ByteArray);
+			var rawBytes:ByteArray = newObject(ByteArray);
 			rawBytes.endian = Endian.BIG_ENDIAN;
 			rawBytes.length = _socket.bytesAvailable;
 			_socket.readBytes(rawBytes, 0, _socket.bytesAvailable);			
@@ -177,19 +176,17 @@ package camu.net
 		{
 			throw new Error("Abstract function!");
 		}
-		
-		// IObjectHeap
-		public function objectNew(cls:Class, ...args) : *
+				
+		public function newObject(cls:Class, ...args) : *
 		{
 			throw new Error("Abstract function!");
 		}
 		
-		public function objectDelete(obj:*) : void
+		public function deleteObject(obj:*) : void
 		{
 			throw new Error("Abstract function!");
 		}
-		
-		// IRawPacketSplit
+				
 		public function getPacketHeaderLength() : int
 		{
 			throw new Error("Abstract function!");
@@ -214,21 +211,21 @@ package camu.net
 			
 			for (var packet:Packet in _sendBuf)
 			{
-				objectDelete(packet);
+				deleteObject(packet);
 			}
 			_sendBuf.length = 0;
 			
 			for (var j:ByteArray in _recvBuf)
 			{
 				j.clear();
-				objectDelete(j);
+				deleteObject(j);
 			}
 			_recvBuf.length = 0;
 			
 			for (var k:ByteArray in _rawRecvBuf)
 			{
 				k.clear();
-				objectDelete(k);
+				deleteObject(k);
 			}
 			_rawRecvBuf.length = 0;
 		}
@@ -242,25 +239,36 @@ package camu.net
 						
 			while (_sendBuf.length)
 			{
-				_logger.log("handleSendBuffer, _sendBuf length:",_sendBuf.length.toString(), LEVEL.DEBUG);
+				_logger.log("handleSendBuffer, _sendBuf length:",_sendBuf.length, LEVEL.DEBUG);
 				
 				var packet:Packet = _sendBuf.shift();
 				if (packet)
 				{
 					var bytes:ByteArray = encode(packet);				
 					if (bytes)
-					{
-						_logger.log("handleSendBuffer, writeBytes", LEVEL.DEBUG);
-						
+					{					
+						_logger.log("handleSendBuffer, writeBytes length=", bytes.bytesAvailable, LEVEL.DEBUG);
+												
 						_socket.writeBytes(bytes, 0, bytes.bytesAvailable);
 						_socket.flush();
 						
 						bytes.clear();
-						objectDelete(bytes);
+						deleteObject(bytes);
 					}
 				
-					objectDelete(packet);
+					deleteObject(packet);
 				}				
+			}
+		}
+		
+		private function dispatchPacketEvent(packet:Packet) : void
+		{
+			var packetEvent:PacketEvent = newObject(PacketEvent, packet);
+			if (packetEvent)
+			{
+				dispatchEvent(packetEvent);
+				
+				deleteObject(packetEvent);
 			}
 		}
 		
@@ -284,18 +292,14 @@ package camu.net
 					var packet:Packet = decode(bytes);
 					if (packet)
 					{
-						var event:Event = packet as Event;
-						if (event)
-						{
-							dispatchEvent(event);
-						}
-					
-						objectDelete(packet);
-					}
+						dispatchPacketEvent(packet);
+						
+						deleteObject(packet);
+					}					
 				}
 				
 				bytes.clear();
-				objectDelete(bytes);			
+				deleteObject(bytes);			
 			}
 		}			
 
@@ -313,7 +317,7 @@ package camu.net
 						_splitFSMState = FS_SPLIT_NEXT;
 						if (!_splitOneBuf)
 						{							
-							_splitOneBuf = objectNew(ByteArray);
+							_splitOneBuf = newObject(ByteArray);
 						}
 						_logger.log("FSMState = BEGIN, goto NEXT", LEVEL.DEBUG);
 						break;
@@ -387,7 +391,7 @@ package camu.net
 						_logger.log("FSMState = ONE, push packet into recvBuf.", LEVEL.DEBUG);
 						_splitOneBuf.position = 0;
 						_recvBuf.push(_splitOneBuf);						
-						_splitOneBuf = objectNew(ByteArray);
+						_splitOneBuf = newObject(ByteArray);
 						if (rawPacketBuf.bytesAvailable == 0)
 						{
 							_logger.log("FSMState = ONE, rawPacketBuf empty, goto NEXT", LEVEL.DEBUG);

@@ -3,20 +3,13 @@
   <includeClasses>
     <classEntry path="camu.object.BaseObjectFactory"/>
     <classEntry path="camu.object.DefaultObjectCache"/>
-    <classEntry path="camu.object.IObjectFactory"/>
     <classEntry path="camu.object.IObjectCreator"/>
     <classEntry path="camu.object.IObjectCache"/>
-    <classEntry path="camu.object.IObjectInit"/>
-    <classEntry path="camu.net.IDecoder"/>
-    <classEntry path="camu.net.IEncoder"/>
     <classEntry path="camu.object.IObjectWithQualifiedSubclassNameMethod"/>
     <classEntry path="camu.event.IEventDispatcher"/>
     <classEntry path="camu.event.IEventObject"/>
-    <classEntry path="camu.net.ITickElapse"/>
     <classEntry path="camu.net.Packet"/>
-    <classEntry path="camu.net.IRawPacketSplit"/>
     <classEntry path="camu.object.ObjectUtil"/>
-    <classEntry path="camu.net.IObjectHeap"/>
     <classEntry path="camu.loader.ILoader"/>
     <classEntry path="camu.loader.DefaultLoader"/>
     <classEntry path="camu.loader.ILoaderEventHandler"/>
@@ -28,6 +21,8 @@
     <classEntry path="camu.util.ShortIntUtil"/>
     <classEntry path="camu.util.Bytes2Hex"/>
     <classEntry path="camu.util.BigIntUtil"/>
+    <classEntry path="camu.net.PacketEvent"/>
+    <classEntry path="camu.net.PacketEventCreator"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
