@@ -19,7 +19,5 @@ package camu.logger
 				return new TrueLogger(cls, logLevel, logFunction);
 			}
 		}		
-		
-		
 	}
 }

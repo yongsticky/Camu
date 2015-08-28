@@ -18,7 +18,7 @@ package camu.object
 		
 		public function DefaultObjectCache()
 		{
-			_logger = Logger.createLogger(DefaultObjectCache, LEVEL.DEBUG);
+			_logger = Logger.createLogger(DefaultObjectCache, LEVEL.ERROR);
 			
 			_dictCache = new Dictionary();						
 		}

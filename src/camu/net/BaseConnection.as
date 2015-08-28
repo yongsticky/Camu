@@ -42,7 +42,7 @@ package camu.net
 		
 		public function BaseConnection()
 		{
-			_logger = Logger.createLogger(BaseConnection, LEVEL.DEBUG);
+			_logger = Logger.createLogger(BaseConnection, LEVEL.ERROR);
 			
 			_socket = new Socket();
 
@@ -261,7 +261,7 @@ package camu.net
 			}
 		}
 		
-		private function dispatchPacketEvent(packet:Packet) : void
+		protected function dispatchPacketEvent(packet:Packet) : void
 		{
 			var packetEvent:PacketEvent = newObject(PacketEvent, packet);
 			if (packetEvent)

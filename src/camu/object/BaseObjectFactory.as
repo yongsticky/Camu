@@ -17,7 +17,7 @@ package camu.object
 		
 		public function BaseObjectFactory(objCache:IObjectCache = null)
 		{
-			_logger = Logger.createLogger(BaseObjectFactory, LEVEL.DEBUG);
+			_logger = Logger.createLogger(BaseObjectFactory, LEVEL.ERROR);
 			
 			_dictClsCreator = new Dictionary();
 			

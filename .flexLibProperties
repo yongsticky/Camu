@@ -18,7 +18,6 @@
     <classEntry path="camu.util.Logger.LogLevel"/>
     <classEntry path="camu.util.Logger.ILogger"/>
     <classEntry path="camu.util.Logger.TrueLogger"/>
-    <classEntry path="camu.util.ShortIntUtil"/>
     <classEntry path="camu.util.Bytes2Hex"/>
     <classEntry path="camu.util.BigIntUtil"/>
     <classEntry path="camu.net.PacketEvent"/>
