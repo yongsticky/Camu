@@ -87,7 +87,13 @@ package camu.object
 						obj = new cls();		// 使用new创建
 					
 					}
-				}				
+				}
+				
+				
+				if (obj is IObjectInit)
+				{
+					(obj as IObjectInit).onObjectCreated(this);
+				}
 				
 				_logger.log("createInstance, object has been created.", LEVEL.INFO);
 				return obj;
@@ -105,7 +111,12 @@ package camu.object
 			if (!obj)
 			{
 				return;
-			}		
+			}
+			
+			if (obj is IObjectInit)
+			{
+				(obj as IObjectInit).onObjectDestroy();
+			}
 			
 			_logger.log("destroyInstance, class = [",getQualifiedClassName(obj), "].", LEVEL.INFO);
 			

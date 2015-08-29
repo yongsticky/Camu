@@ -21,6 +21,7 @@
     <classEntry path="camu.util.Bytes2Hex"/>
     <classEntry path="camu.net.PacketEvent"/>
     <classEntry path="camu.net.PacketEventCreator"/>
+    <classEntry path="camu.object.IObjectInit"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

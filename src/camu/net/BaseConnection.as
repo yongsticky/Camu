@@ -42,7 +42,7 @@ package camu.net
 		
 		public function BaseConnection()
 		{
-			_logger = Logger.createLogger(BaseConnection, LEVEL.ERROR);
+			_logger = Logger.createLogger(BaseConnection, LEVEL.INFO);
 			
 			_socket = new Socket();
 
@@ -78,7 +78,7 @@ package camu.net
 		
 		protected function onSocketData(event:ProgressEvent):void
 		{
-			_logger.log("onSocketData", LEVEL.DEBUG);
+			_logger.log("onSocketData", LEVEL.INFO);
 
 			var rawBytes:ByteArray = newObject(ByteArray);
 			rawBytes.endian = Endian.BIG_ENDIAN;

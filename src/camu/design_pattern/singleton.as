@@ -23,6 +23,21 @@ package camu.design_pattern
 				throw new Error("singleton class call init more than once.");
 			}
 		}
+		
+		public static function add(obj:*) : void
+		{
+			if (!_instance)
+			{
+				if (obj)
+				{
+					_instance._inner.set(obj);
+				}
+			}
+			else
+			{
+				throw new Error("singleton class call init more than once.");
+			}
+		}
 
 		public static function instanceOf(cls:Class) : *
 		{
@@ -78,5 +93,14 @@ class Inner
 		}
 
 		return null;
+	}
+	
+	public function set(obj:*) : void
+	{
+		var key:String = getQualifiedClassName(obj);
+		if (key)
+		{
+			_dictSingleton[key] = obj;
+		}
 	}
 }
