@@ -166,33 +166,33 @@ package camu.net
 			
 		
 		// IEncoder
-		public function encode(packet:Packet) : ByteArray
+		protected function encode(packet:Packet) : ByteArray
 		{
 			throw new Error("Abstract function!");
 		}
 		
 		// IDecoder
-		public function decode(bytes:ByteArray) : Packet
+		protected function decode(bytes:ByteArray) : Packet
 		{
 			throw new Error("Abstract function!");
 		}
 				
-		public function newObject(cls:Class, data:* = null) : *
+		protected function newObject(cls:Class, data:* = null) : *
 		{
 			throw new Error("Abstract function!");
 		}
 		
-		public function deleteObject(obj:*) : void
+		protected function deleteObject(obj:*) : void
 		{
 			throw new Error("Abstract function!");
 		}
 				
-		public function getPacketHeaderLength() : int
+		protected function getPacketHeaderLength() : int
 		{
 			throw new Error("Abstract function!");
 		}
 		
-		public function resolvePacketBodyLength(bytes:ByteArray) : int
+		protected function resolvePacketBodyLength(bytes:ByteArray) : int
 		{
 			throw new Error("Abstract function!");
 		}

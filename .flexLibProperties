@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
-    <classEntry path="camu.object.BaseObjectFactory"/>
-    <classEntry path="camu.object.DefaultObjectCache"/>
+    <classEntry path="camu.object.DefaultObjectFactory"/>
+    <classEntry path="camu.object.DefaultObjectContainer"/>
     <classEntry path="camu.object.IObjectCreator"/>
-    <classEntry path="camu.object.IObjectCache"/>
+    <classEntry path="camu.object.IObjectContainer"/>
     <classEntry path="camu.object.IObjectWithQualifiedSubclassNameMethod"/>
     <classEntry path="camu.event.IEventDispatcher"/>
     <classEntry path="camu.event.IEventObject"/>
@@ -21,7 +21,7 @@
     <classEntry path="camu.util.Bytes2Hex"/>
     <classEntry path="camu.net.PacketEvent"/>
     <classEntry path="camu.net.PacketEventCreator"/>
-    <classEntry path="camu.object.IObjectInit"/>
+    <classEntry path="camu.object.IObjectFactory"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

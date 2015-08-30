@@ -8,7 +8,7 @@ package camu.net
 		{
 		}
 		
-		public function createObject(data:*):*
+		public function createObject(cls:Class, data:*): *
 		{
 			
 			if (data is Packet)
@@ -21,7 +21,7 @@ package camu.net
 			}
 		}
 		
-		public function setCreatedData(obj:*, data:*) : void
+		public function onCreated(obj:*, data:*) : void
 		{			
 			var packetEvent:PacketEvent = obj as PacketEvent;
 			if (packetEvent)
@@ -44,6 +44,19 @@ package camu.net
 		public function destoryObject(obj:*):void
 		{
 			
+		}
+		
+		public function onDestroy(obj:*) : void
+		{
+			var packetEvent:PacketEvent = obj as PacketEvent;
+			if (packetEvent)
+			{
+				packetEvent.packet = null;				
+			}
+			else
+			{
+				throw new Error("Class Type Error.");
+			}
 		}
 	}
 }
