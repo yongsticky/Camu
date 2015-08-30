@@ -13,9 +13,8 @@ package camu.net
 	import camu.logger.LEVEL;
 	import camu.logger.Logger;
 	
-	
 
-	public class BaseConnection extends EventDispatcher
+	public class BaseConnector extends EventDispatcher
 	{	
 		private var _logger:ILogger;
 		
@@ -40,9 +39,9 @@ package camu.net
 		private var _splitOneBuf:ByteArray = null;		
 		
 		
-		public function BaseConnection()
+		public function BaseConnector()
 		{
-			_logger = Logger.createLogger(BaseConnection, LEVEL.INFO);
+			_logger = Logger.createLogger(BaseConnector, LEVEL.INFO);
 			
 			_socket = new Socket();
 
@@ -64,14 +63,14 @@ package camu.net
 		{
 			_logger.log("onConnect", LEVEL.DEBUG);
 			
-			dispatchEvent(new ConnectionEvent(ConnectionEvent.CONNECTED));
+			dispatchEvent(new ConnectorEvent(ConnectorEvent.CONNECTED));
 		}
 		
 		protected function onClose(event:Event):void
 		{
 			_logger.log("onClose", LEVEL.DEBUG);
 			
-			dispatchEvent(new ConnectionEvent(ConnectionEvent.SERVER_CLOSED));
+			dispatchEvent(new ConnectorEvent(ConnectorEvent.SERVER_CLOSED));
 			
 			destroy();
 		}
@@ -91,14 +90,14 @@ package camu.net
 		{
 			_logger.log("onSecurityError", LEVEL.ERROR);
 
-			dispatchEvent(new ConnectionEvent(ConnectionEvent.SECURITY_ERROR));
+			dispatchEvent(new ConnectorEvent(ConnectorEvent.SECURITY_ERROR));
 		}
 		
 		protected function onIoError(event:IOErrorEvent):void
 		{
 			_logger.log("onIoError", LEVEL.ERROR);
 
-			dispatchEvent(new ConnectionEvent(ConnectionEvent.IO_ERROR));
+			dispatchEvent(new ConnectorEvent(ConnectorEvent.IO_ERROR));
 		}
 		
 				
@@ -140,7 +139,7 @@ package camu.net
 					_socket.close();			
 				}
 				
-				dispatchEvent(new ConnectionEvent(ConnectionEvent.CLIENT_CLOSED));
+				dispatchEvent(new ConnectorEvent(ConnectorEvent.CLIENT_CLOSED));
 				
 				destroy();
 			}
@@ -149,7 +148,7 @@ package camu.net
 		public function send(packet:Packet) : void
 		{			
 			if (packet)
-			{			
+			{		
 				_sendBuf.push(packet);
 				
 				_logger.log("send, push packet into send buffer.", LEVEL.DEBUG);
@@ -247,9 +246,9 @@ package camu.net
 					var bytes:ByteArray = encode(packet);				
 					if (bytes)
 					{					
-						_logger.log("handleSendBuffer, writeBytes length=", bytes.bytesAvailable, LEVEL.DEBUG);
+						_logger.log("handleSendBuffer, writeBytes length=", bytes.bytesAvailable, LEVEL.DEBUG);						
 												
-						_socket.writeBytes(bytes, 0, bytes.bytesAvailable);
+						_socket.writeBytes(bytes, 0, bytes.bytesAvailable);						
 						_socket.flush();
 						
 						bytes.clear();
@@ -262,13 +261,15 @@ package camu.net
 		}
 		
 		protected function dispatchPacketEvent(packet:Packet) : void
-		{
-			var packetEvent:PacketEvent = newObject(PacketEvent, packet);
+		{			
+			var packetEvent:PacketEvent =  new PacketEvent(packet);
 			if (packetEvent)
 			{
+				_logger.log("dispatchPacketEvent eventType=[", packet.eventType, "]", LEVEL.INFO);
+				
 				dispatchEvent(packetEvent);
 				
-				deleteObject(packetEvent);
+				packetEvent = null;
 			}
 		}
 		

@@ -15,7 +15,7 @@ package camu.object
 		
 		public function DefaultObjectContainer()
 		{
-			_logger = Logger.createLogger(DefaultObjectContainer, LEVEL.INFO);
+			_logger = Logger.createLogger(DefaultObjectContainer, LEVEL.ERROR);
 			
 			_logger.log("constructor", LEVEL.DEBUG);
 			
@@ -59,7 +59,7 @@ package camu.object
 					delete _objects[key];
 				}
 				
-				_logger.log("pop object [", key, "] from container complete.", LEVEL.INFO);
+				_logger.log("pop object [", key, "] from container complete.", LEVEL.INFO);				
 				
 				return obj;
 			}

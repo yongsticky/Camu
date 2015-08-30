@@ -69,38 +69,26 @@ import flash.utils.getQualifiedClassName;
 
 class Inner
 {
-	private var _dictSingleton:Dictionary = null;
+	private var _singletons:Dictionary;
 
 	public function Inner(singletons:Array)
 	{
-		_dictSingleton = new Dictionary();
+		_singletons = new Dictionary();
 
 		for each(var item:* in singletons)
 		{
-			_dictSingleton[getQualifiedClassName(item)] = item;
+			this.set(item);
 		}
 		
 	}
 
 	public function get(key:String) : *
-	{
-		if (key)
-		{
-			if (_dictSingleton.hasOwnProperty(key))
-			{				
-				return _dictSingleton[key];
-			}
-		}
-
-		return null;
+	{			
+		return _singletons[key];
 	}
 	
 	public function set(obj:*) : void
 	{
-		var key:String = getQualifiedClassName(obj);
-		if (key)
-		{
-			_dictSingleton[key] = obj;
-		}
+		_singletons[getQualifiedClassName(obj)] = obj;
 	}
 }

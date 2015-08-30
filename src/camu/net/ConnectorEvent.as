@@ -2,7 +2,7 @@ package camu.net
 {
 	import flash.events.Event;
 
-	public class ConnectionEvent extends Event
+	public class ConnectorEvent extends Event
 	{
 		public static const CONNECTED:String = "connected";
 		public static const SERVER_CLOSED:String = "server_closed";
@@ -10,7 +10,7 @@ package camu.net
 		public static const IO_ERROR:String = "io_error";
 		public static const SECURITY_ERROR:String = "security_error";
 
-		public function ConnectionEvent(name:String)
+		public function ConnectorEvent(name:String)
 		{
 			super(name);
 		}
