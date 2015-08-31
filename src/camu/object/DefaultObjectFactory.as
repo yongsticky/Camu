@@ -65,9 +65,10 @@ package camu.object
 				var creator:IObjectCreator = safeGetProperty(_classes[key], OBJECT_CREATE);
 				
 				var obj:* = null;
+				var createNew:Boolean = false;
 				if (curCacheSize > 0)
 				{
-					obj = _container.popObject(cls);
+					obj = _container.popObject(cls);					
 					
 					_logger.log("object [Class=", key, "] has been created from cache.", LEVEL.INFO);
 				}
@@ -82,10 +83,12 @@ package camu.object
 						obj = new cls();
 					}
 					
+					createNew = true;
+					
 					_logger.log("object [Class=", key, "] has been created from new.", LEVEL.INFO);
 				}
 				
-				if (obj && creator)
+				if (!createNew && obj && creator)
 				{
 					creator.onCreated(obj, data);		// 对Cache pop出来的对象，给一次重新初始化的机会
 				}								

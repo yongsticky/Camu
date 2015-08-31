@@ -261,15 +261,17 @@ package camu.net
 		}
 		
 		protected function dispatchPacketEvent(packet:Packet) : void
-		{			
-			var packetEvent:PacketEvent =  new PacketEvent(packet);
-			if (packetEvent)
+		{	
+			
+			var event:PacketEvent =  new PacketEvent(packet);
+						
+			if (event)
 			{
 				_logger.log("dispatchPacketEvent eventType=[", packet.eventType, "]", LEVEL.INFO);
 				
-				dispatchEvent(packetEvent);
+				dispatchEvent(event);
 				
-				packetEvent = null;
+				event = null;
 			}
 		}
 		
