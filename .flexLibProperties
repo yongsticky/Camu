@@ -5,7 +5,7 @@
     <classEntry path="camu.object.DefaultObjectContainer"/>
     <classEntry path="camu.object.IObjectCreator"/>
     <classEntry path="camu.object.IObjectContainer"/>
-    <classEntry path="camu.object.IObjectWithQualifiedSubclassNameMethod"/>
+    <classEntry path="camu.object.IObjectWithQualifiedClassName"/>
     <classEntry path="camu.event.IEventDispatcher"/>
     <classEntry path="camu.event.IEventObject"/>
     <classEntry path="camu.net.Packet"/>

@@ -9,17 +9,17 @@ package camu.object
 			throw new Error("ObjectUtil is a static class");
 		}
 		
-		public static function getQualifiedSubclassName(value:*) : String
+		public static function getQualifiedClassName(value:*) : String
 		{
 			var key:String = null;		
-			var obj:IObjectWithQualifiedSubclassNameMethod = value as IObjectWithQualifiedSubclassNameMethod;
+			var obj:IObjectWithQualifiedClassName = value as IObjectWithQualifiedClassName;
 			if (obj)
 			{
-				key = obj.getQualifiedSubclassName();
+				key = obj.getQualifiedClassName();
 			}
 			else
 			{				
-				key = getQualifiedClassName(value);
+				key = flash.utils.getQualifiedClassName(value);
 			}
 			
 			return key;

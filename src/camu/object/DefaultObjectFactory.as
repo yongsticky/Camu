@@ -109,7 +109,7 @@ package camu.object
 				return;
 			}		
 			
-			var key:String = ObjectUtil.getQualifiedSubclassName(obj);		// 处理子类对象
+			var key:String = ObjectUtil.getQualifiedClassName(obj);		// 处理子类对象
 			if (_classes.hasOwnProperty(key))
 			{					
 				var creator:IObjectCreator = safeGetProperty(_classes[key], OBJECT_CREATE);				

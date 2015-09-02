@@ -26,7 +26,7 @@ package camu.object
 		{
 			_logger.log("pushObject Enter", LEVEL.DEBUG);
 			
-			var key:String = ObjectUtil.getQualifiedSubclassName(obj);
+			var key:String = ObjectUtil.getQualifiedClassName(obj);
 			_logger.log("pushObject, obj's ClassName=", key, LEVEL.DEBUG);
 			if (!_objects.hasOwnProperty(key))
 			{
@@ -74,7 +74,7 @@ package camu.object
 		
 		public function peekObject(obj:*) : int
 		{
-			var key:String = ObjectUtil.getQualifiedSubclassName(obj);	
+			var key:String = ObjectUtil.getQualifiedClassName(obj);	
 			
 			var num:int = 0;
 			if (_objects.hasOwnProperty(key))

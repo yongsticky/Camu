@@ -1,4 +1,4 @@
-package camu.design_pattern
+package camu.singleton
 {
 	import flash.utils.getQualifiedClassName;
 
@@ -26,7 +26,7 @@ package camu.design_pattern
 		
 		public static function add(obj:*) : void
 		{
-			if (!_instance)
+			if (_instance)
 			{
 				if (obj)
 				{
