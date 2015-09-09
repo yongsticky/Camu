@@ -1,4 +1,4 @@
-package camu.object
+package camu.object.interfaces
 {
 	public interface IObjectContainer
 	{

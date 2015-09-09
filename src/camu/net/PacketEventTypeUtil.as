@@ -6,7 +6,7 @@ package camu.net
 	{
 		public function PacketEventTypeUtil()
 		{
-			throw new Error("Abstract Class!");
+			throw new Error("Abstract class, , you must extned it.");
 		}
 		
 		private static const _eventTypePrefix:String = "PacketEvent#";

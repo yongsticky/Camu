@@ -1,6 +1,7 @@
 package camu.object
 {
 	import flash.utils.getQualifiedClassName;
+	import camu.object.interfaces.IObjectWithQualifiedClassName;
 
 	public class ObjectUtil
 	{

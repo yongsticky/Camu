@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
-    <classEntry path="camu.object.DefaultObjectFactory"/>
-    <classEntry path="camu.object.DefaultObjectContainer"/>
-    <classEntry path="camu.object.IObjectCreator"/>
-    <classEntry path="camu.object.IObjectContainer"/>
-    <classEntry path="camu.object.IObjectWithQualifiedClassName"/>
+    <classEntry path="camu.object.ObjectFactory"/>
+    <classEntry path="camu.object.ObjectContainer"/>
+    <classEntry path="camu.object.interfaces.IObjectContainer"/>
+    <classEntry path="camu.object.interfaces.IObjectWithQualifiedClassName"/>
     <classEntry path="camu.event.IEventDispatcher"/>
     <classEntry path="camu.event.IEventObject"/>
     <classEntry path="camu.net.Packet"/>
@@ -21,6 +20,14 @@
     <classEntry path="camu.util.Bytes2Hex"/>
     <classEntry path="camu.net.PacketEvent"/>
     <classEntry path="camu.net.PacketEventTypeUtil"/>
+    <classEntry path="camu.mvc.IModel"/>
+    <classEntry path="camu.mvc.IView"/>
+    <classEntry path="camu.mvc.interface.INotification"/>
+    <classEntry path="camu.mvc.interface.IFacade"/>
+    <classEntry path="camu.mvc.Notification"/>
+    <classEntry path="camu.mvc.Facade"/>
+    <classEntry path="camu.mvc.Mediator"/>
+    <classEntry path="camu.object.interfaces.IObjectRecycled"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
