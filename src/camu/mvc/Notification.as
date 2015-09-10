@@ -5,10 +5,8 @@ package camu.mvc
 		protected var _name:String;
 		protected var _data:Object; 
 		
-		public function Notification(name:String, data:Object)
+		public function Notification()
 		{
-			setName(name);
-			setData(data);
 		}
 		
 		public function getName() : String
