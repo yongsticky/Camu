@@ -6,7 +6,7 @@ package camu.logger
 		{
 		}
 		
-		public function log(...msg) : void
+		public function log(obj:*, ...msg) : void
 		{			
 		}
 	}

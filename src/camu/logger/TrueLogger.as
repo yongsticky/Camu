@@ -12,28 +12,20 @@ package camu.logger
 
 		
 		
-		public function TrueLogger(cls:Class, LEVEL:int = LEVEL.ERROR, logFunction:Function = null)
-		{
-			var name:String = getQualifiedClassName(cls);
-			if (name)
-			{
-				_className = "[";			
-				_className += name;
-				_className += "]";
-			}
-		
-			
+		public function TrueLogger(LEVEL:int = LEVEL.ERROR, logFunction:Function = null)
+		{		
 			_logFunction = logFunction ? logFunction:trace;
 			
 			_LEVEL = LEVEL;					
 		}
 		
-		public function log(...msg) : void
-		{
+		
+		public function log(obj:*, ...msg) : void
+		{			
 			var msgLevel:int  = isNaN(msg[msg.length -1] ) ? LEVEL.ERROR : int(msg.pop());
 			if (msgLevel >= _LEVEL )
-			{				
-				_logFunction(getTime() + _className + LEVEL.LOG_LEVEL_DESC[msgLevel] + msg.join(" "));
+			{				;
+				_logFunction(getTime() + "[" + getQualifiedClassName(obj) + "]" + LEVEL.LOG_LEVEL_DESC[msgLevel] + msg.join(" "));
 			}	
 		}
 		

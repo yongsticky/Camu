@@ -16,7 +16,7 @@ package camu.logger
 			}
 			else
 			{
-				return new TrueLogger(cls, logLevel, logFunction);
+				return new TrueLogger(logLevel, logFunction);
 			}
 		}		
 	}

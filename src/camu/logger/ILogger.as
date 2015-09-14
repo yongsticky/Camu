@@ -3,6 +3,6 @@ package camu.logger
 {
 	public interface ILogger
 	{
-		function log(...msg) : void;
+		function log(obj:*, ...msg) : void;
 	}
 }
