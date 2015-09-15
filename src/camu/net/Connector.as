@@ -49,7 +49,10 @@ package camu.net
 			_sendBuf = new Vector.<Packet>();
 			_rawRecvBuf = new Vector.<ByteArray>();
 			_recvBuf = new Vector.<ByteArray>();
-									
+			
+			// for debug
+			loadFakeRecvData(_recvBuf);
+			
 			
 			_socket.addEventListener(Event.CONNECT, onConnect);
 			_socket.addEventListener(Event.CLOSE, onClose);
@@ -98,6 +101,11 @@ package camu.net
 			_logger.log(this, "onIoError", LEVEL.ERROR);
 
 			dispatchEvent(new ConnectorEvent(ConnectorEvent.IO_ERROR));
+		}
+		
+		protected function loadFakeRecvData(recvBuf:Vector.<ByteArray>) : void
+		{
+			
 		}
 		
 				
@@ -298,11 +306,11 @@ package camu.net
 						dispatchPacketEvent(packet);
 						
 						deleteObject(packet);
-					}					
-				}
-				
-				bytes.clear();
-				deleteObject(bytes);			
+					}
+					
+					bytes.clear();
+					deleteObject(bytes);
+				}							
 			}
 		}			
 
