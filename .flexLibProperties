@@ -28,6 +28,15 @@
     <classEntry path="camu.mvc.Facade"/>
     <classEntry path="camu.mvc.Mediator"/>
     <classEntry path="camu.object.interfaces.IObjectRecycled"/>
+    <classEntry path="camu.errors.NullObjectError"/>
+    <classEntry path="camu.errors.AbstractClassError"/>
+    <classEntry path="camu.errors.AbstractFunctionError"/>
+    <classEntry path="camu.errors.ZeroLittleError"/>
+    <classEntry path="camu.errors.UnhandledBranchError"/>
+    <classEntry path="camu.errors.NoExistPropertyError"/>
+    <classEntry path="camu.errors.ZeroError"/>
+    <classEntry path="camu.errors.UnexpectedLengthError"/>
+    <classEntry path="camu.errors.BufferOverflowError"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

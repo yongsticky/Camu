@@ -4,10 +4,11 @@ package camu.object
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	
+	import camu.errors.NoExistPropertyError;
 	import camu.logger.ILogger;
 	import camu.logger.LEVEL;
 	import camu.logger.Logger;
-	import camu.object.interfaces.IObjectContainer;	
+	import camu.object.interfaces.IObjectContainer;
 	import camu.object.interfaces.IObjectRecycled;
 	
 	public class ObjectFactory
@@ -84,8 +85,8 @@ package camu.object
 				return obj;
 			}
 			else
-			{				
-				throw new Error("Class [" + key + "] not registered, create object FAILED!");	
+			{					
+				throw new NoExistPropertyError("Class [" + key + "] not registered.");
 			}			
 		}
 		
@@ -127,7 +128,7 @@ package camu.object
 			}
 			else
 			{
-				throw new Error("Class [" + key + "] not registered, destroy object FAILED!");
+				throw new NoExistPropertyError("Class [" + key + "] not registered.");
 			}			
 		}
 		

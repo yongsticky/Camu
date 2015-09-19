@@ -1,13 +1,15 @@
 package camu.object
 {
 	import flash.utils.getQualifiedClassName;
+	
+	import camu.errors.AbstractClassError;
 	import camu.object.interfaces.IObjectWithQualifiedClassName;
 
 	public class ObjectUtil
 	{
 		public function ObjectUtil()
-		{
-			throw new Error("ObjectUtil is a static class");
+		{			
+			throw new AbstractClassError();
 		}
 		
 		public static function getQualifiedClassName(value:*) : String

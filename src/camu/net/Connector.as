@@ -9,6 +9,9 @@ package camu.net
 	import flash.utils.ByteArray;
 	import flash.utils.Endian;
 	
+	import camu.errors.AbstractFunctionError;
+	import camu.errors.UnhandledBranchError;
+	import camu.errors.ZeroLittleError;
 	import camu.logger.ILogger;
 	import camu.logger.LEVEL;
 	import camu.logger.Logger;
@@ -175,33 +178,33 @@ package camu.net
 		// IEncoder
 		protected function encode(packet:Packet) : ByteArray
 		{
-			throw new Error("Abstract function, you must override it.");
+			throw new AbstractFunctionError();
 		}
 		
 		// IDecoder
 		protected function decode(bytes:ByteArray) : Packet
 		{
-			throw new Error("Abstract function, you must override it.");
+			throw new AbstractFunctionError();
 		}
 				
 		protected function newObject(cls:Class, data:* = null) : *
 		{
-			throw new Error("Abstract function, you must override it.");
+			throw new AbstractFunctionError();
 		}
 		
 		protected function deleteObject(obj:*) : void
 		{
-			throw new Error("Abstract function, you must override it.");
+			throw new AbstractFunctionError();
 		}
 				
 		protected function getPacketHeaderLength() : int
 		{
-			throw new Error("Abstract function, you must override it.");
+			throw new AbstractFunctionError();
 		}
 		
 		protected function resolvePacketBodyLength(bytes:ByteArray) : int
 		{
-			throw new Error("Abstract function, you must override it.");
+			throw new AbstractFunctionError();
 		}
 				
 		
@@ -393,8 +396,8 @@ package camu.net
 							_splitFSMState = FS_SPLIT_ONE;
 						}
 						else
-						{
-							throw new Error(this, "FS_SPLIT_BODY Error. readBodySize < 0");
+						{							
+							throw new ZeroLittleError();
 						}
 						break;
 					
@@ -432,12 +435,12 @@ package camu.net
 						break;
 					
 					case FS_SPLIT_END:
-					_logger.log(this, "FSMState = END, return.", LEVEL.DEBUG);
+						_logger.log(this, "FSMState = END, return.", LEVEL.DEBUG);
 						_splitFSMState = FS_SPLIT_BEGIN;
 						return;
 						
 					default:
-						throw new Error("FSM State Error. Unknown _splitFSMState");
+						throw new UnhandledBranchError();						
 				}
 			}
 		}

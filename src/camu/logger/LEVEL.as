@@ -1,5 +1,7 @@
 package camu.logger
 {
+	import camu.errors.AbstractClassError;
+
 	public final class LEVEL
 	{
 		
@@ -13,8 +15,8 @@ package camu.logger
 		public static const LOG_LEVEL_DESC:Array = ["[DEBUG] - ", "[INFO] - ", "[WARNING] - ", "[ERROR] - "];
 				
 		public function LEVEL()
-		{
-			throw new Error("can't create instance.");
+		{			
+			throw new AbstractClassError();
 		}	
 	}
 }

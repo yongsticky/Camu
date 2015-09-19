@@ -1,5 +1,7 @@
 package camu.mvc
 {
+	import camu.errors.NullObjectError;
+
 	public class Notification
 	{
 		protected var _name:String;
@@ -18,7 +20,7 @@ package camu.mvc
 		{
 			if (!name)
 			{
-				throw new Error("Parameter is null.");
+				throw new NullObjectError();
 			}
 			
 			_name = name;

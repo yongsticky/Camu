@@ -2,6 +2,7 @@ package camu.mvc
 {
 	import flash.utils.Dictionary;
 	
+	import camu.errors.NullObjectError;
 	import camu.mvc.interfaces.INotificationHandler;
 
 	public class Facade
@@ -18,8 +19,8 @@ package camu.mvc
 		public function registerHandler(name:String, handler:INotificationHandler):void
 		{
 			if (!name || !handler)
-			{
-				throw new Error("Parameter is null.");
+			{				
+				throw new NullObjectError();
 			}
 			
 			_handlers[name] = handler;			
@@ -29,7 +30,7 @@ package camu.mvc
 		{
 			if (!name)
 			{
-				throw new Error("Parameter is null.");
+				throw new NullObjectError();
 			}
 			
 			if (_handlers.hasOwnProperty(name))
@@ -43,7 +44,7 @@ package camu.mvc
 		{
 			if (!name)
 			{
-				throw new Error("Parameter is null.");
+				throw new NullObjectError();
 			}
 			
 			if (_handlers.hasOwnProperty(name))

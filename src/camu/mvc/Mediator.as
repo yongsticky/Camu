@@ -1,6 +1,7 @@
 package camu.mvc
 {
-	import camu.mvc.interfaces.IMediator;	
+	import camu.errors.AbstractFunctionError;
+	import camu.mvc.interfaces.IMediator;
 	
 	public class Mediator implements IMediator
 	{		
@@ -23,8 +24,8 @@ package camu.mvc
 		}
 		
 		protected function getFacade() : Facade
-		{
-			throw new Error("Abstract function, you must override it.");
+		{			
+			throw new AbstractFunctionError();
 		}
 	}
 }

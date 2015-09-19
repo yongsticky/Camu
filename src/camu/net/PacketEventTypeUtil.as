@@ -1,12 +1,14 @@
 package camu.net
 {
 	import flash.utils.getQualifiedClassName;
+	
+	import camu.errors.AbstractClassError;
 
 	public class PacketEventTypeUtil
 	{
 		public function PacketEventTypeUtil()
-		{
-			throw new Error("Abstract class, , you must extned it.");
+		{			
+			throw new AbstractClassError();
 		}
 		
 		private static const _eventTypePrefix:String = "PacketEvent#";
