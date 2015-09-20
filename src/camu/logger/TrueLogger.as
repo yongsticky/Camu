@@ -24,7 +24,7 @@ package camu.logger
 		{			
 			var msgLevel:int  = isNaN(msg[msg.length -1] ) ? LEVEL.ERROR : int(msg.pop());
 			if (msgLevel >= _LEVEL )
-			{				;
+			{	
 				_logFunction(getTime() + "[" + getQualifiedClassName(obj) + "]" + LEVEL.LOG_LEVEL_DESC[msgLevel] + msg.join(" "));
 			}	
 		}
