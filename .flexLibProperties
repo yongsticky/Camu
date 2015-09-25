@@ -37,6 +37,7 @@
     <classEntry path="camu.errors.ZeroError"/>
     <classEntry path="camu.errors.UnexpectedLengthError"/>
     <classEntry path="camu.errors.BufferOverflowError"/>
+    <classEntry path="camu.errors.IndexOutOfRangeError"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
