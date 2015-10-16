@@ -54,7 +54,7 @@ package camu.net
 			_recvBuf = new Vector.<ByteArray>();
 			
 			// for debug
-			loadFakeRecvData(_recvBuf);
+			//loadFakeRecvData(_recvBuf);
 			
 			
 			_socket.addEventListener(Event.CONNECT, onConnect);
