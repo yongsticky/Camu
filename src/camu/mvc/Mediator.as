@@ -17,6 +17,16 @@ package camu.mvc
 		public function onUnregister() : void
 		{
 		}
+		
+		public function isInterestedNotification(name:String) : Boolean
+		{
+			return false;
+		}
+		
+		public function onNotify(notification:Notification) : void
+		{
+			
+		}
 				
 		public function sendNotification(notification:Notification) : void
 		{

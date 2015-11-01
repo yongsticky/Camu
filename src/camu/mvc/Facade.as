@@ -83,22 +83,7 @@ package camu.mvc
 				delete _mediators[name];
 			}
 		}
-		
-		internal function retrieveMediator(name:String) : IMediator
-		{
-			if (!name)
-			{
-				throw new NullObjectError();
-			}
-			
-			if (_mediators.hasOwnProperty(name))
-			{
-				return _mediators[name] as IMediator;
-			}
-			
-			return null;
-		}
-		
+				
 		internal function sendNotification(notification:Notification) : void
 		{
 			if (notification)
@@ -109,7 +94,20 @@ package camu.mvc
 				if (handler)
 				{
 					handler.execute(notification);	
-				}				
+				}
+				/* 
+				未启用
+				else
+				{
+					for each(var m:IMediator in _mediators)
+					{
+						if (m.isInterestedNotification(name))
+						{
+							m.onNotify(notification);
+						}
+					}
+				}	
+				*/
 			}
 		}		
 	}
